@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregador de Airdrops Cripto  - HitmakerCoins -</title>
+    <!-- Carrega o Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carrega a fonte Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Define a fonte Inter como padrão */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Efeito de hover sutil para os botões */
+        .btn {
+            @apply font-bold py-2 px-4 rounded-lg transition-all duration-300;
+        }
+        .btn-primary {
+            @apply bg-blue-600 text-white hover:bg-blue-700;
+        }
+        .btn-secondary {
+            @apply bg-gray-600 text-white hover:bg-gray-700;
+        }
+        .btn-success {
+            @apply bg-green-500 text-white hover:bg-green-600;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <!-- Cabeçalho -->
+    <header class="text-center py-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-2">
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
+                Airdrops Cripto Exclusivos
+            </span>
+        </h1>
+        <p class="text-lg text-gray-400">Encontre e participe dos melhores airdrops do mercado.</p>
+    </header>
+
+    <!-- Lista de Airdrops -->
+    <main class="container mx-auto px-4 pb-16">
+        <!-- O JavaScript vai inserir os cards de airdrop aqui -->
+        <div id="airdrop-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Exemplo de card (será gerado via JS) -->
+            <!-- 
+            <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden flex flex-col">
+                <div class="p-6 flex-grow">
+                    <img src="https://placehold.co/100x100/1F2937/FFFFFF?text=Logo" alt="Logo" class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-gray-700">
+                    <h3 class="text-2xl font-bold text-center mb-2">Nome do Projeto</h3>
+                    <p class="text-gray-400 text-center text-sm">Breve descrição do que é este airdrop e por que ele é interessante.</p>
+                </div>
+                <div class="p-4 bg-gray-700/50 grid grid-cols-2 gap-4">
+                    <button class="btn btn-secondary" data-action="details" data-id="1">
+                        Ver Detalhes
+                    </button>
+                    <a href="#" target="_blank" class="btn btn-primary text-center">
+                        Participar Agora
+                    </a>
+                </div>
+            </div>
+            -->
+        </div>
+    </main>
+
+    <!-- Modal (Pop-up) de Detalhes -->
+    <!-- Overlay -->
+    <div id="modal-overlay" class="fixed inset-0 bg-black bg-opacity-75 z-40 hidden" aria-hidden="true"></div>
+
+    <!-- Painel do Modal -->
+    <div id="modal-panel" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-800 rounded-lg shadow-2xl p-6 w-11/12 max-w-lg z-50 hidden">
+        <!-- Cabeçalho do Modal -->
+        <div class="flex justify-between items-center mb-4">
+            <h2 id="modal-title" class="text-2xl font-bold">Nome do Projeto</h2>
+            <button id="modal-close-btn" class="text-gray-400 hover:text-white text-3xl">&times;</button>
+        </div>
+        
+        <!-- Conteúdo do Modal -->
+        <div class="mb-6">
+            <p id="modal-description" class="text-gray-300">
+                A descrição completa do airdrop virá aqui...
+            </p>
+        </div>
+
+        <!-- Rodapé do Modal -->
+        <div class="text-right">
+            <a id="modal-participate-link" href="#" target="_blank" class="btn btn-success text-lg px-6 py-3">
+                Quero Participar!
+            </a>
+        </div>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="text-center py-8 border-t border-gray-800">
+        <p class="text-gray-500 text-sm">
+            © 2025 Agregador de Airdrops. Todos os direitos reservados.
+        </p>
+        <p class="text-gray-600 text-xs mt-2">
+            Aviso: Investimentos em criptomoedas são arriscados. Faça sua própria pesquisa.
+        </p>
+    </footer>
+
+
+    <script>
+        // ######################################################################
+        // ##  IMPORTANTE: EDITE A LISTA DE AIRDROPS AQUI ABAIXO             ##
+        // ######################################################################
+        
+        const airdropData = [
+            {
+                id: "zeta",
+                nome: "Protocolo Zeta",
+                logoUrl: "https://placehold.co/100x100/3B82F6/FFFFFF?text=Zeta",
+                descricaoCurta: "Novo protocolo DeFi na rede Solana com foco em derivativos.",
+                descricaoCompleta: "O Protocolo Zeta é uma plataforma de finanças descentralizadas (DeFi) construída na rede Solana. O objetivo é oferecer negociação de derivativos de forma rápida e com baixo custo. O airdrop é destinado a usuários que testarem a plataforma na rede de testes (testnet) e interagirem com o smart contract.",
+                // MUITO IMPORTANTE: Substitua "#" pelo SEU link de indicação
+                linkIndicacao: "https://exemplo.com/zeta/ref=SEU_CODIGO_AQUI" 
+            },
+            {
+                id: "aura",
+                nome: "Aura Network",
+                logoUrl: "https://placehold.co/100x100/8B5CF6/FFFFFF?text=Aura",
+                descricaoCurta: "Plataforma de NFTs e Metaverso com foco em interoperabilidade.",
+                descricaoCompleta: "Aura Network é uma blockchain Layer-1 focada em NFTs e Metaverso. Eles estão distribuindo tokens 'AURA' para artistas que mintarem seus primeiros NFTs na plataforma e para usuários que colecionarem 3 ou mais itens durante o evento de lançamento.",
+                // MUITO IMPORTANTE: Substitua "#" pelo SEU link de indicação
+                linkIndicacao: "https://exemplo.com/aura/join=SEU_CODIGO_AQUI"
+            },
+            {
+                id: "orbiter",
+                nome: "Orbiter Chain",
+                logoUrl: "https://placehold.co/100x100/10B981/FFFFFF?text=Orb",
+                descricaoCurta: "Solução de Layer-2 para escalabilidade do Ethereum.",
+                descricaoCompleta: "A Orbiter Chain é uma nova solução de Rollup (Layer-2) que promete transações mais rápidas e baratas no Ethereum. O airdrop será distribuído para usuários que fizerem bridge (ponte) de fundos para a rede e realizarem pelo menos 10 transações antes da data oficial de lançamento.",
+                // MUITO IMPORTANTE: Substitua "#" pelo SEU link de indicação
+                linkIndicacao: "https://exemplo.com/orbiter/invite=SEU_CODIGO_AQUI"
+            },
+            {
+                id: "novo_projeto",
+                nome: "Projeto Futuro",
+                logoUrl: "https://placehold.co/100x100/F59E0B/FFFFFF?text=New",
+                descricaoCurta: "Adicione seu próximo airdrop aqui facilmente.",
+                descricaoCompleta: "Para adicionar um novo airdrop, basta copiar um dos blocos de código acima (dentro dos colchetes '[]'), colar aqui, e alterar os valores de id, nome, logoUrl, descrições e, o mais importante, o linkIndicacao.",
+                // MUITO IMPORTANTE: Substitua "#" pelo SEU link de indicação
+                linkIndicacao: "#"
+            }
+        ];
+
+        // ######################################################################
+        // ##  O CÓDIGO ABAIXO CUIDA DA LÓGICA DO SITE. NÃO PRECISA MEXER.    ##
+        // ######################################################################
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const airdropList = document.getElementById('airdrop-list');
+            const modalOverlay = document.getElementById('modal-overlay');
+            const modalPanel = document.getElementById('modal-panel');
+            const modalCloseBtn = document.getElementById('modal-close-btn');
+            
+            const modalTitle = document.getElementById('modal-title');
+            const modalDescription = document.getElementById('modal-description');
+            const modalParticipateLink = document.getElementById('modal-participate-link');
+
+            // 1. Função para renderizar os cards na tela
+            function renderAirdrops() {
+                if (!airdropList) return;
+                
+                airdropList.innerHTML = ''; // Limpa a lista antes de adicionar
+                
+                airdropData.forEach(airdrop => {
+                    const cardHtml = `
+                        <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden flex flex-col transform transition-transform duration-300 hover:scale-[1.03]">
+                            <div class="p-6 flex-grow">
+                                <img src="${airdrop.logoUrl}" alt="Logo ${airdrop.nome}" class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-gray-700 object-cover">
+                                <h3 class="text-2xl font-bold text-center mb-2">${airdrop.nome}</h3>
+                                <p class="text-gray-400 text-center text-sm">${airdrop.descricaoCurta}</p>
+                            </div>
+                            <div class="p-4 bg-gray-700/50 grid grid-cols-2 gap-4">
+                                <button class="btn btn-secondary" data-action="details" data-id="${airdrop.id}">
+                                    Ver Detalhes
+                                </button>
+                                <a href="${airdrop.linkIndicacao}" target="_blank" rel="noopener noreferrer" class="btn btn-primary text-center">
+                                    Participar Agora
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                    airdropList.innerHTML += cardHtml;
+                });
+            }
+
+            // 2. Função para abrir o modal
+            function openModal(id) {
+                const airdrop = airdropData.find(a => a.id === id);
+                if (!airdrop) return;
+
+                // Preenche o modal com os dados
+                modalTitle.textContent = airdrop.nome;
+                modalDescription.textContent = airdrop.descricaoCompleta;
+                modalParticipateLink.href = airdrop.linkIndicacao;
+                modalParticipateLink.target = "_blank";
+                modalParticipateLink.rel = "noopener noreferrer";
+
+                // Mostra o modal
+                modalOverlay.classList.remove('hidden');
+                modalPanel.classList.remove('hidden');
+            }
+
+            // 3. Função para fechar o modal
+            function closeModal() {
+                modalOverlay.classList.add('hidden');
+                modalPanel.classList.add('hidden');
+            }
+
+            // --- Event Listeners ---
+
+            // Renderiza os airdrops quando a página carregar
+            renderAirdrops();
+
+            // Adiciona listener para fechar o modal (no botão X e no overlay)
+            modalCloseBtn.addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', closeModal);
+
+            // Adiciona listener na lista de airdrops (usando delegação de evento)
+            airdropList.addEventListener('click', (e) => {
+                // Verifica se o clique foi em um botão de "Ver Detalhes"
+                const targetButton = e.target.closest('button[data-action="details"]');
+                if (targetButton) {
+                    const airdropId = targetButton.dataset.id;
+                    openModal(airdropId);
+                }
+            });
+
+            // Adiciona listener para fechar o modal com a tecla 'Escape'
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modalPanel.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
