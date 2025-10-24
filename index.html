@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agregador de Airdrops Cripto  - HitmakerCoins -</title>
-    <!-- Carrega o Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Carrega a fonte Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Carrega o Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carrega a fonte Inter --><link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -32,8 +30,7 @@
 </head>
 <body class="bg-gray-900 text-white">
 
-    <!-- Cabeçalho -->
-    <header class="text-center py-12">
+    <!-- Cabeçalho --><header class="text-center py-12">
         <h1 class="text-4xl md:text-5xl font-bold mb-2">
             <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
                 Airdrops Cripto Exclusivos
@@ -42,12 +39,9 @@
         <p class="text-lg text-gray-400">Encontre e participe dos melhores airdrops do mercado.</p>
     </header>
 
-    <!-- Lista de Airdrops -->
-    <main class="container mx-auto px-4 pb-16">
-        <!-- O JavaScript vai inserir os cards de airdrop aqui -->
-        <div id="airdrop-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Exemplo de card (será gerado via JS) -->
-            <!-- 
+    <!-- Lista de Airdrops --><main class="container mx-auto px-4 pb-16">
+        <!-- O JavaScript vai inserir os cards de airdrop aqui --><div id="airdrop-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Exemplo de card (será gerado via JS) --><!-- 
             <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden flex flex-col">
                 <div class="p-6 flex-grow">
                     <img src="https://placehold.co/100x100/1F2937/FFFFFF?text=Logo" alt="Logo" class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-gray-700">
@@ -63,39 +57,31 @@
                     </a>
                 </div>
             </div>
-            -->
-        </div>
+            --></div>
     </main>
 
-    <!-- Modal (Pop-up) de Detalhes -->
-    <!-- Overlay -->
-    <div id="modal-overlay" class="fixed inset-0 bg-black bg-opacity-75 z-40 hidden" aria-hidden="true"></div>
+    <!-- Modal (Pop-up) de Detalhes --><!-- Overlay --><div id="modal-overlay" class="fixed inset-0 bg-black bg-opacity-75 z-40 hidden" aria-hidden="true"></div>
 
-    <!-- Painel do Modal -->
-    <div id="modal-panel" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-800 rounded-lg shadow-2xl p-6 w-11/12 max-w-lg z-50 hidden">
-        <!-- Cabeçalho do Modal -->
-        <div class="flex justify-between items-center mb-4">
+    <!-- Painel do Modal --><div id="modal-panel" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-800 rounded-lg shadow-2xl p-6 w-11/12 max-w-lg z-50 hidden">
+        <!-- Cabeçalho do Modal --><div class="flex justify-between items-center mb-4">
             <h2 id="modal-title" class="text-2xl font-bold">Nome do Projeto</h2>
             <button id="modal-close-btn" class="text-gray-400 hover:text-white text-3xl">&times;</button>
         </div>
         
-        <!-- Conteúdo do Modal -->
-        <div class="mb-6">
+        <!-- Conteúdo do Modal --><div class="mb-6">
             <p id="modal-description" class="text-gray-300">
                 A descrição completa do airdrop virá aqui...
             </p>
         </div>
 
-        <!-- Rodapé do Modal -->
-        <div class="text-right">
+        <!-- Rodapé do Modal --><div class="text-right">
             <a id="modal-participate-link" href="#" target="_blank" class="btn btn-success text-lg px-6 py-3">
                 Quero Participar!
             </a>
         </div>
     </div>
 
-    <!-- Rodapé -->
-    <footer class="text-center py-8 border-t border-gray-800">
+    <!-- Rodapé --><footer class="text-center py-8 border-t border-gray-800">
         <p class="text-gray-500 text-sm">
             © 2025 Agregador de Airdrops. Todos os direitos reservados.
         </p>
@@ -112,40 +98,40 @@
         
         const airdropData = [
             {
-                id: "zeta",
-                nome: "Protocolo Zeta",
-                logoUrl: "https://placehold.co/100x100/3B82F6/FFFFFF?text=Zeta",
-                descricaoCurta: "Novo protocolo DeFi na rede Solana com foco em derivativos.",
-                descricaoCompleta: "O Protocolo Zeta é uma plataforma de finanças descentralizadas (DeFi) construída na rede Solana. O objetivo é oferecer negociação de derivativos de forma rápida e com baixo custo. O airdrop é destinado a usuários que testarem a plataforma na rede de testes (testnet) e interagirem com o smart contract.",
-                // MUITO IMPORTANTE: Substitua "#" pelo SEU link de indicação
-                linkIndicacao: "https://exemplo.com/zeta/ref=SEU_CODIGO_AQUI" 
+                id: "toby",
+                nome: "Toby.so",
+                // Substitua esta URL pela URL REAL do logo do Toby.so
+                logoUrl: "https://pbs.twimg.com/profile_images/1881581325599272960/8m1Nl2iv_400x400.jpg", 
+                descricaoCurta: "Plataforma social-fi ('Social Finance') onde você interage e ganha recompensas.",
+                descricaoCompleta: "Toby.so é um aplicativo social focado em cripto (Social-Fi). Ao participar da plataforma, interagir com outros usuários e completar tarefas, você se qualifica para um futuro airdrop. Use o link para começar a acumular pontos.",
+                linkIndicacao: "https://app.toby.so/ref?code=32OKLM" 
             },
             {
-                id: "aura",
-                nome: "Aura Network",
-                logoUrl: "https://placehold.co/100x100/8B5CF6/FFFFFF?text=Aura",
-                descricaoCurta: "Plataforma de NFTs e Metaverso com foco em interoperabilidade.",
-                descricaoCompleta: "Aura Network é uma blockchain Layer-1 focada em NFTs e Metaverso. Eles estão distribuindo tokens 'AURA' para artistas que mintarem seus primeiros NFTs na plataforma e para usuários que colecionarem 3 ou mais itens durante o evento de lançamento.",
-                // MUITO IMPORTANTE: Substitua "#" pelo SEU link de indicação
-                linkIndicacao: "https://exemplo.com/aura/join=SEU_CODIGO_AQUI"
+                id: "hylo",
+                nome: "Hylo",
+                // Substitua esta URL pela URL REAL do logo do Hylo
+                logoUrl: "https://hylo.so/icons/hylo-logo-mark.svg",
+                descricaoCurta: "Plataforma de 'leverage' (alavancagem) para pontos e airdrops futuros.",
+                descricaoCompleta: "Hylo é uma plataforma que permite alavancar seus pontos de participação em diferentes protocolos. Ao se conectar, você pode potencializar seus ganhos em múltiplos airdrops. Este link de referência te dá acesso à plataforma.",
+                linkIndicacao: "https://hylo.so/leverage?ref=QPOBZ6"
             },
             {
-                id: "orbiter",
-                nome: "Orbiter Chain",
-                logoUrl: "https://placehold.co/100x100/10B981/FFFFFF?text=Orb",
-                descricaoCurta: "Solução de Layer-2 para escalabilidade do Ethereum.",
-                descricaoCompleta: "A Orbiter Chain é uma nova solução de Rollup (Layer-2) que promete transações mais rápidas e baratas no Ethereum. O airdrop será distribuído para usuários que fizerem bridge (ponte) de fundos para a rede e realizarem pelo menos 10 transações antes da data oficial de lançamento.",
-                // MUITO IMPORTANTE: Substitua "#" pelo SEU link de indicação
-                linkIndicacao: "https://exemplo.com/orbiter/invite=SEU_CODIGO_AQUI"
+                id: "asterdex",
+                nome: "Asterdex",
+                // Substitua esta URL pela URL REAL do logo do Asterdex
+                logoUrl: "https://static.asterdexstatic.com/cloud-futures/static/images/aster/logo.svg", 
+                descricaoCurta: "Uma exchange descentralizada (DEX) com programa de referência.",
+                descricaoCompleta: "Asterdex é uma exchange descentralizada (DEX) onde você pode trocar (swap) criptomoedas. Ao usar a plataforma através do link de referência, você pode ganhar bônus e se qualificar para possíveis recompensas de airdrop por ser um usuário ativo.",
+                linkIndicacao: "https://www.asterdex.com/en/referral/13045B"
             },
             {
-                id: "novo_projeto",
-                nome: "Projeto Futuro",
-                logoUrl: "https://placehold.co/100x100/F59E0B/FFFFFF?text=New",
-                descricaoCurta: "Adicione seu próximo airdrop aqui facilmente.",
-                descricaoCompleta: "Para adicionar um novo airdrop, basta copiar um dos blocos de código acima (dentro dos colchetes '[]'), colar aqui, e alterar os valores de id, nome, logoUrl, descrições e, o mais importante, o linkIndicacao.",
-                // MUITO IMPORTANTE: Substitua "#" pelo SEU link de indicação
-                linkIndicacao: "#"
+                id: "ducat",
+                nome: "Ducat Protocol",
+                // Substitua esta URL pela URL REAL do logo do Ducat Protocol
+                logoUrl: "https://pbs.twimg.com/media/GL8MRoCW8AALx8E.jpg",
+                descricaoCurta: "Protocolo focado em 'Quanta' (pontos) para um airdrop futuro.",
+                descricaoCompleta: "O Ducat Protocol é um novo protocolo DeFi. Ao participar e interagir com a plataforma, você acumula 'Quanta', que são pontos que contarão para um futuro airdrop. O link de referência garante seu bônus inicial.",
+                linkIndicacao: "https://app.ducatprotocol.com/quanta?referral=WXOv9C7ljolX"
             }
         ];
 
@@ -244,3 +230,5 @@
 
 </body>
 </html>
+
+
