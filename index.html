@@ -39,25 +39,48 @@
         <p class="text-lg text-gray-400">Encontre e participe dos melhores airdrops do mercado.</p>
     </header>
 
-    <!-- Lista de Airdrops --><main class="container mx-auto px-4 pb-16">
-        <!-- O JavaScript vai inserir os cards de airdrop aqui --><div id="airdrop-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Exemplo de card (será gerado via JS) --><!-- 
-            <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden flex flex-col">
-                <div class="p-6 flex-grow">
-                    <img src="https://placehold.co/100x100/1F2937/FFFFFF?text=Logo" alt="Logo" class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-gray-700">
-                    <h3 class="text-2xl font-bold text-center mb-2">Nome do Projeto</h3>
-                    <p class="text-gray-400 text-center text-sm">Breve descrição do que é este airdrop e por que ele é interessante.</p>
-                </div>
-                <div class="p-4 bg-gray-700/50 grid grid-cols-2 gap-4">
-                    <button class="btn btn-secondary" data-action="details" data-id="1">
-                        Ver Detalhes
-                    </button>
-                    <a href="#" target="_blank" class="btn btn-primary text-center">
-                        Participar Agora
-                    </a>
+    <!-- Container das "Páginas" --><main id="page-container" class="container mx-auto px-4 pb-16 min-h-screen">
+        
+        <!-- ====== PÁGINA PRINCIPAL ====== -->
+        <div id="page-main">
+            <h2 class="text-3xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-green-300 to-blue-400">
+                ★ Airdrops em Destaque
+            </h2>
+            <div id="featured-airdrop-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- JS vai preencher os airdrops em destaque aqui -->
+            </div>
+
+            <h2 class="text-3xl font-bold mt-16 mb-8">Explorar Outras Redes</h2>
+            <!-- Card Clicável para Solana -->
+            <div id="solana-card-link" class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform transition-all duration-300 hover:scale-[1.03] hover:shadow-purple-500/30 cursor-pointer max-w-lg mx-auto">
+                <div class="p-8 flex flex-col items-center justify-center">
+                    <img src="https://cryptologos.cc/logos/solana-sol-logo.png?v=032" alt="Logo Solana" class="w-24 h-24 mb-4">
+                    <h3 class="text-3xl font-bold text-center">Principais Airdrops</h3>
+                    <p class="text-xl text-purple-300">Rede Solana</p>
+                    <span class="mt-4 text-sm text-gray-400">Clique para ver</span>
                 </div>
             </div>
-            --></div>
+        </div>
+
+        <!-- ====== PÁGINA SOLANA (ESCONDIDA POR PADRÃO) ====== -->
+        <div id="page-solana" class="hidden">
+            <button id="back-to-main-btn" class="btn btn-secondary mb-8 inline-flex items-center">
+                <!-- Ícone de seta -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Voltar
+            </button>
+            
+            <div class="flex items-center justify-center mb-8">
+                <img src="https://cryptologos.cc/logos/solana-sol-logo.png?v=032" alt="Logo Solana" class="w-16 h-16 mr-4">
+                <h2 class="text-4xl font-bold">Airdrops Rede Solana</h2>
+            </div>
+            
+            <div id="solana-airdrop-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- JS vai preencher os airdrops da Solana aqui -->
+            </div>
+        </div>
     </main>
 
     <!-- Modal (Pop-up) de Detalhes --><!-- Overlay --><div id="modal-overlay" class="fixed inset-0 bg-black bg-opacity-75 z-40 hidden" aria-hidden="true"></div>
@@ -93,14 +116,13 @@
 
     <script>
         // ######################################################################
-        // ##  IMPORTANTE: EDITE A LISTA DE AIRDROPS AQUI ABAIXO             ##
+        // ##  LISTA DE AIRDROPS EM DESTAQUE (SEUS LINKS DE REFERÊNCIA)      ##
         // ######################################################################
         
-        const airdropData = [
+        const featuredAirdrops = [
             {
                 id: "toby",
                 nome: "Toby.so",
-                // Substitua esta URL pela URL REAL do logo do Toby.so
                 logoUrl: "https://pbs.twimg.com/profile_images/1881581325599272960/8m1Nl2iv_400x400.jpg", 
                 descricaoCurta: "Plataforma social-fi ('Social Finance') onde você interage e ganha recompensas.",
                 descricaoCompleta: "Toby.so é um aplicativo social focado em cripto (Social-Fi). Ao participar da plataforma, interagir com outros usuários e completar tarefas, você se qualifica para um futuro airdrop. Use o link para começar a acumular pontos.",
@@ -109,7 +131,6 @@
             {
                 id: "hylo",
                 nome: "Hylo",
-                // Substitua esta URL pela URL REAL do logo do Hylo
                 logoUrl: "https://hylo.so/icons/hylo-logo-mark.svg",
                 descricaoCurta: "Plataforma de 'leverage' (alavancagem) para pontos e airdrops futuros.",
                 descricaoCompleta: "Hylo é uma plataforma que permite alavancar seus pontos de participação em diferentes protocolos. Ao se conectar, você pode potencializar seus ganhos em múltiplos airdrops. Este link de referência te dá acesso à plataforma.",
@@ -118,7 +139,6 @@
             {
                 id: "asterdex",
                 nome: "Asterdex",
-                // Substitua esta URL pela URL REAL do logo do Asterdex
                 logoUrl: "https://static.asterdexstatic.com/cloud-futures/static/images/aster/logo.svg", 
                 descricaoCurta: "Uma exchange descentralizada (DEX) com programa de referência.",
                 descricaoCompleta: "Asterdex é uma exchange descentralizada (DEX) onde você pode trocar (swap) criptomoedas. Ao usar a plataforma através do link de referência, você pode ganhar bônus e se qualificar para possíveis recompensas de airdrop por ser um usuário ativo.",
@@ -127,7 +147,6 @@
             {
                 id: "ducat",
                 nome: "Ducat Protocol",
-                // Substitua esta URL pela URL REAL do logo do Ducat Protocol
                 logoUrl: "https://pbs.twimg.com/media/GL8MRoCW8AALx8E.jpg",
                 descricaoCurta: "Protocolo focado em 'Quanta' (pontos) para um airdrop futuro.",
                 descricaoCompleta: "O Ducat Protocol é um novo protocolo DeFi. Ao participar e interagir com a plataforma, você acumula 'Quanta', que são pontos que contarão para um futuro airdrop. O link de referência garante seu bônus inicial.",
@@ -136,50 +155,118 @@
         ];
 
         // ######################################################################
+        // ##  LISTA DE AIRDROPS DA REDE SOLANA                              ##
+        // ######################################################################
+
+        const solanaAirdrops = [
+            {
+                id: "kamino",
+                nome: "Kamino Finance (SOL)",
+                logoUrl: "https://pbs.twimg.com/profile_images/1765032095318151168/k5-3Qv_b_400x400.jpg",
+                descricaoCurta: "Protocolo de liquidez e alavancagem na rede Solana.",
+                descricaoCompleta: "Kamino Finance é um hub de liquidez na Solana. Participe para ganhar pontos (Kamino Points) que contarão para o airdrop do token $KMNO. Use o link para verificar sua elegibilidade e começar.",
+                // ATENÇÃO: Substitua este link pelo seu link de indicação!
+                linkIndicacao: "https://airdropalert.com/kamino-finance-airdrop" 
+            },
+            {
+                id: "zeus",
+                nome: "Zeus Network (SOL)",
+                logoUrl: "https://pbs.twimg.com/profile_images/1775535312608149504/M-a7-z-B_400x400.jpg",
+                descricaoCurta: "Camada de comunicação entre Solana e Bitcoin.",
+                descricaoCompleta: "Zeus Network constrói uma ponte entre o Bitcoin e a Solana. O airdrop é baseado na participação na plataforma de testes (Zealy) e engajamento da comunidade. Participe das tarefas para ganhar sua alocação.",
+                // ATENÇÃO: Substitua este link pelo seu link de indicação!
+                linkIndicacao: "https://airdropalert.com/zeus-network-airdrop"
+            },
+            {
+                id: "parcl",
+                nome: "Parcl (SOL)",
+                logoUrl: "https://pbs.twimg.com/profile_images/1734237191437340672/mAgL0SL5_400x400.png",
+                descricaoCurta: "Plataforma de negociação de imóveis (Real World Assets) na Solana.",
+                descricaoCompleta: "Parcl permite negociar o valor de mercados imobiliários de forma digital. O airdrop é baseado em um sistema de pontos que você ganha ao fornecer liquidez ou negociar na plataforma.",
+                // ATENÇÃO: Substitua este link pelo seu link de indicação!
+                linkIndicacao: "https://airdropalert.com/parcl-airdrop"
+            },
+            {
+                id: "drift",
+                nome: "Drift Protocol (SOL)",
+                logoUrl: "https://pbs.twimg.com/profile_images/1762881180630630400/Jb-w0f-e_400x400.jpg",
+                descricaoCurta: "Exchange descentralizada de perpétuos (DEX) na Solana.",
+                descricaoCompleta: "Drift é uma DEX de alta performance para trading de futuros perpétuos. O airdrop é baseado no volume de negociação e na participação no 'Drift Points Program'. Quanto mais você usa, mais pontos acumula.",
+                // ATENÇÃO: Substitua este link pelo seu link de indicação!
+                linkIndicacao: "https://airdropalert.com/drift-protocol-airdrop"
+            }
+        ];
+
+        // Combina todos os airdrops em uma única lista para facilitar a busca do modal
+        const allAirdrops = [...featuredAirdrops, ...solanaAirdrops];
+
+
+        // ######################################################################
         // ##  O CÓDIGO ABAIXO CUIDA DA LÓGICA DO SITE. NÃO PRECISA MEXER.    ##
         // ######################################################################
 
         document.addEventListener('DOMContentLoaded', () => {
-            const airdropList = document.getElementById('airdrop-list');
+            
+            // --- Elementos de Navegação ---
+            const pageMain = document.getElementById('page-main');
+            const pageSolana = document.getElementById('page-solana');
+            const solanaCardLink = document.getElementById('solana-card-link');
+            const backToMainBtn = document.getElementById('back-to-main-btn');
+
+            // --- Listas de Conteúdo ---
+            const featuredList = document.getElementById('featured-airdrop-list');
+            const solanaList = document.getElementById('solana-airdrop-list');
+            const pageContainer = document.getElementById('page-container'); // Container principal para eventos
+
+            // --- Elementos do Modal ---
             const modalOverlay = document.getElementById('modal-overlay');
             const modalPanel = document.getElementById('modal-panel');
             const modalCloseBtn = document.getElementById('modal-close-btn');
-            
             const modalTitle = document.getElementById('modal-title');
             const modalDescription = document.getElementById('modal-description');
             const modalParticipateLink = document.getElementById('modal-participate-link');
 
-            // 1. Função para renderizar os cards na tela
-            function renderAirdrops() {
-                if (!airdropList) return;
-                
-                airdropList.innerHTML = ''; // Limpa a lista antes de adicionar
-                
-                airdropData.forEach(airdrop => {
-                    const cardHtml = `
-                        <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden flex flex-col transform transition-transform duration-300 hover:scale-[1.03]">
-                            <div class="p-6 flex-grow">
-                                <img src="${airdrop.logoUrl}" alt="Logo ${airdrop.nome}" class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-gray-700 object-cover">
-                                <h3 class="text-2xl font-bold text-center mb-2">${airdrop.nome}</h3>
-                                <p class="text-gray-400 text-center text-sm">${airdrop.descricaoCurta}</p>
-                            </div>
-                            <div class="p-4 bg-gray-700/50 grid grid-cols-2 gap-4">
-                                <button class="btn btn-secondary" data-action="details" data-id="${airdrop.id}">
-                                    Ver Detalhes
-                                </button>
-                                <a href="${airdrop.linkIndicacao}" target="_blank" rel="noopener noreferrer" class="btn btn-primary text-center">
-                                    Participar Agora
-                                </a>
-                            </div>
+            // 1. Função reutilizável para criar o HTML de um card
+            function createCardHtml(airdrop) {
+                return `
+                    <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden flex flex-col transform transition-transform duration-300 hover:scale-[1.03]">
+                        <div class="p-6 flex-grow">
+                            <img src="${airdrop.logoUrl}" alt="Logo ${airdrop.nome}" class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-gray-700 object-cover">
+                            <h3 class="text-2xl font-bold text-center mb-2">${airdrop.nome}</h3>
+                            <p class="text-gray-400 text-center text-sm">${airdrop.descricaoCurta}</p>
                         </div>
-                    `;
-                    airdropList.innerHTML += cardHtml;
+                        <div class="p-4 bg-gray-700/50 grid grid-cols-2 gap-4">
+                            <button class="btn btn-secondary" data-action="details" data-id="${airdrop.id}">
+                                Ver Detalhes
+                            </button>
+                            <a href="${airdrop.linkIndicacao}" target="_blank" rel="noopener noreferrer" class="btn btn-primary text-center">
+                                Participar Agora
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // 2. Funções para renderizar os cards nas listas corretas
+            function renderFeaturedAirdrops() {
+                if (!featuredList) return;
+                featuredList.innerHTML = ''; // Limpa a lista
+                featuredAirdrops.forEach(airdrop => {
+                    featuredList.innerHTML += createCardHtml(airdrop);
                 });
             }
 
-            // 2. Função para abrir o modal
+            function renderSolanaAirdrops() {
+                if (!solanaList) return;
+                solanaList.innerHTML = ''; // Limpa a lista
+                solanaAirdrops.forEach(airdrop => {
+                    solanaList.innerHTML += createCardHtml(airdrop);
+                });
+            }
+
+            // 3. Função para abrir o modal (agora busca em 'allAirdrops')
             function openModal(id) {
-                const airdrop = airdropData.find(a => a.id === id);
+                const airdrop = allAirdrops.find(a => a.id === id);
                 if (!airdrop) return;
 
                 // Preenche o modal com os dados
@@ -194,24 +281,42 @@
                 modalPanel.classList.remove('hidden');
             }
 
-            // 3. Função para fechar o modal
+            // 4. Função para fechar o modal
             function closeModal() {
                 modalOverlay.classList.add('hidden');
                 modalPanel.classList.add('hidden');
             }
 
-            // --- Event Listeners ---
+            // 5. Funções de Navegação entre "páginas"
+            function showSolanaPage() {
+                pageMain.classList.add('hidden');
+                pageSolana.classList.remove('hidden');
+                window.scrollTo(0, 0); // Rola para o topo da página
+            }
+
+            function showMainPage() {
+                pageSolana.classList.add('hidden');
+                pageMain.classList.remove('hidden');
+                window.scrollTo(0, 0); // Rola para o topo da página
+            }
+
+            // --- Adiciona os Event Listeners ---
 
             // Renderiza os airdrops quando a página carregar
-            renderAirdrops();
+            renderFeaturedAirdrops();
+            renderSolanaAirdrops();
+
+            // Adiciona listeners de navegação
+            solanaCardLink.addEventListener('click', showSolanaPage);
+            backToMainBtn.addEventListener('click', showMainPage);
 
             // Adiciona listener para fechar o modal (no botão X e no overlay)
             modalCloseBtn.addEventListener('click', closeModal);
             modalOverlay.addEventListener('click', closeModal);
 
-            // Adiciona listener na lista de airdrops (usando delegação de evento)
-            airdropList.addEventListener('click', (e) => {
-                // Verifica se o clique foi em um botão de "Ver Detalhes"
+            // Adiciona listener principal no container para "Ver Detalhes" (delegação de evento)
+            // Isso funciona para ambas as listas
+            pageContainer.addEventListener('click', (e) => {
                 const targetButton = e.target.closest('button[data-action="details"]');
                 if (targetButton) {
                     const airdropId = targetButton.dataset.id;
@@ -230,5 +335,4 @@
 
 </body>
 </html>
-
 
